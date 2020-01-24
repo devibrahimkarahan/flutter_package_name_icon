@@ -23,7 +23,6 @@ void update(List<String> arguments) {
   if (packageName != null && packageName.isNotEmpty) {
     android.updatePackageName(packageName);
     ios.updateBundleId(packageName);
-    return;
   }
 
   /// App Name
