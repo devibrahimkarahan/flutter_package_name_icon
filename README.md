@@ -14,7 +14,8 @@ A package which you can update app package (bundleId), app name and app icon.
 Add your Flutter app name, app package, app icon configuration to your `pubspec.yaml` or create a new config file called `flutter_package_name_icon.yaml`. 
 ```yaml
 dev_dependencies: 
-  flutter_package_name_icon: "^0.0.1"
+  flutter_package_name_icon:
+    git: git://github.com/devibrahimkarahan/flutter_package_name_icon.git
 
 flutter_package_name_icon:
   name: "App name"
