@@ -25,11 +25,10 @@ void updateBundleId(String bundleId) {
   for (int i = 0; i < lines.length; i++) {
     final String line = lines[i];
     if (line.contains(_bundleIDKey)) {
-      print(">> $line");
       final String preTag = lines[i].split(_bundleIDKey)[0];
       lines[i] = '$preTag$_bundleIDKey = "$bundleId"';
       pbXFile.writeAsString(lines.join("\n"));
-      print("[IOS] Bundle ID was updated");
     }
   }
+  print("[IOS] Bundle ID was updated");
 }
