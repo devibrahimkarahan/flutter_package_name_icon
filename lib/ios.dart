@@ -12,7 +12,7 @@ void updateAppName(String name) {
     if (line.contains("CFBundleName")) {
       final String preTag = lines[i + 1].split(r"<string>")[0];
       lines[i + 1] = "$preTag<string>$name</string>";
-      pFile.writeAsString(lines.join("\n"));
+      pFile.writeAsStringSync(lines.join("\n"));
       print("[IOS] App name was changed");
       return;
     }
@@ -27,7 +27,7 @@ void updateBundleId(String bundleId) {
     if (line.contains(_bundleIDKey)) {
       final String preTag = lines[i].split(_bundleIDKey)[0];
       lines[i] = '$preTag$_bundleIDKey = "$bundleId"';
-      pbXFile.writeAsString(lines.join("\n"));
+      pbXFile.writeAsStringSync(lines.join("\n"));
     }
   }
   print("[IOS] Bundle ID was updated");

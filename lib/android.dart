@@ -9,7 +9,7 @@ const String _profileManifestFilePath =
 const String _appBuildGradle = "android/app/build.gradle";
 const String _mainActivityName = "MainActivity";
 
-void updateAppName(String name) {
+void updateAppName(String name) async {
   final File manifestFile = File(_manifestFilePath);
   final List<String> lines = manifestFile.readAsLinesSync();
   for (int x = 0; x < lines.length; x++) {
@@ -20,7 +20,7 @@ void updateAppName(String name) {
         'android:label="$name"',
       );
       lines[x] = line;
-      manifestFile.writeAsString(lines.join("\n"));
+      manifestFile.writeAsStringSync(lines.join("\n"));
       print("[ANDROID] App name was changed");
       return;
     }
@@ -127,7 +127,7 @@ void _updatePackageNameByFile(String path, String package) {
           'package="$package"',
         );
         lines[x] = line;
-        file.writeAsString(lines.join("\n"));
+        file.writeAsStringSync(lines.join("\n"));
         print("[ANDROID-MANIFEST] Package was changed");
         return;
       } else if (line.contains("applicationId")) {
@@ -137,7 +137,7 @@ void _updatePackageNameByFile(String path, String package) {
           '${preTag}applicationId "$package"',
         );
         lines[x] = line;
-        file.writeAsString(lines.join("\n"));
+        file.writeAsStringSync(lines.join("\n"));
         print("[ANDROID-BUILD-GRADLE] Package was changed");
         return;
       }
