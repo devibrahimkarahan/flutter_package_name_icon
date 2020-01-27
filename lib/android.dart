@@ -14,7 +14,7 @@ void updateAppName(String name) {
   final List<String> lines = manifestFile.readAsLinesSync();
   for (int x = 0; x < lines.length; x++) {
     String line = lines[x];
-    if (line.contains("android:label")) {
+    if (line.contains(RegExp('android:label=("|\')[^("|\')]*("|\')'))) {
       line = line.replaceAll(
         RegExp('android:label=("|\')[^("|\')]*("|\')'),
         'android:label="$name"',
