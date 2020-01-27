@@ -2,7 +2,10 @@
 
 A package which you can update app package (bundleId), app name and app icon.
 
-** This package use **[flutter_launcher_icons]** package for change app icons.
+** This package use **[flutter_launcher_icons]** 
+(created by [Mark O'Sullivan](https://github.com/MarkOSullivan94) 
+and [Franz Silva](https://github.com/franzsilva)) and 
+use **[flutter_native_splash]** (created by [Henrique Arthur](https://github.com/henriquearthur)) packages.
 
 ## 🆕 What's New
 
@@ -51,3 +54,6 @@ Shown below is the full list of attributes which you can specify within your Flu
 - `name`: New name of application
 - `package`: New **packageName/bundleId** of application
 - `flutter_icons`: Application icons configuration, See [details](https://github.com/fluttercommunity/flutter_launcher_icons#mag-attributes)
+
+ [flutter_launcher_icons]: <https://github.com/fluttercommunity/flutter_launcher_icons>
+ [flutter_native_splash]: <https://github.com/henriquearthur/flutter_native_splash>

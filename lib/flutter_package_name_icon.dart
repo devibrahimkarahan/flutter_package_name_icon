@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 import 'package:flutter_launcher_icons/main.dart' as flutter_launcher_icons;
+import 'package:flutter_native_splash/flutter_native_splash.dart'
+    as flutter_native_splash;
 import 'package:flutter_package_name_icon/android.dart' as android;
 import 'package:flutter_package_name_icon/ios.dart' as ios;
 import 'package:yaml/yaml.dart';
@@ -12,11 +14,17 @@ const String yamlKey = "flutter_package_name_icon";
 const String nameKey = "name";
 const String packageKey = "package";
 const String iconsKey = "flutter_icons";
+const String splashKey = "flutter_native_splash";
 
-void update(List<String> arguments) {
+void update(List<String> arguments) async {
   final ArgResults argResults = getArgResults(arguments);
 
   final Map<String, dynamic> config = loadConfigFileFromArgResults(argResults);
+
+  if (config[splashKey] != null) {
+    final Map<String, dynamic> splashConfig = Map.from(config[splashKey]);
+    await flutter_native_splash.createSplashByConfig(splashConfig);
+  }
 
   /// App Package name
   final String packageName = config["package"];

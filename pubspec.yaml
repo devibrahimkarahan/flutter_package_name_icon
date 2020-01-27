@@ -11,6 +11,8 @@ dependencies:
   flutter_launcher_icons: ^0.7.4
   yaml: ^2.2.0
   args: ^1.5.2
+  flutter_native_splash:
+    git: git://github.com/devibrahimkarahan/flutter_native_splash.git
 
 dev_dependencies:
   flutter_test:
