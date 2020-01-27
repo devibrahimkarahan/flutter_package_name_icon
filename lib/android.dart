@@ -65,7 +65,7 @@ void _updatePackageNameIntoMainActivity(String package) {
 void _updateFolderStructure(String package) {
   package = package.replaceAll(r".", r"\");
   final String maPath = _getMainActivityPath();
-  final String kotlinOrJava = maPath.contains(r"kotlin") ? "kotlin" : "java";
+  final String kotlinOrJava = maPath.contains("kotlin") ? "kotlin" : "java";
   final Directory maDir =
       Directory(maPath.substring(0, maPath.lastIndexOf(r"\")));
   final String oldPackage =
@@ -77,7 +77,7 @@ void _updateFolderStructure(String package) {
   }
   if (oldPackage.contains(package)) {
     maDir.listSync().forEach((f) {
-      f.renameSync("${f.path.replaceFirst(maDir.path, newPath)}");
+      f.renameSync(f.path.replaceFirst(maDir.path, newPath));
     });
     maDir.deleteSync();
     print("[ANDROID] Folder structure updated");
@@ -87,7 +87,7 @@ void _updateFolderStructure(String package) {
   if (package.contains(oldPackage)) {
     maDir.listSync().forEach((f) {
       if (!f.path.contains(package)) {
-        f.renameSync("${f.path.replaceFirst(maDir.path, newPath)}");
+        f.renameSync(f.path.replaceFirst(maDir.path, newPath));
       }
     });
     print("[ANDROID] Folder structure updated");
@@ -115,7 +115,7 @@ void _updatePackageNameByFile(String path, String package) {
     final List<String> lines = file.readAsLinesSync();
     for (int x = 0; x < lines.length; x++) {
       String line = lines[x];
-      if (line.contains("package.*=")) {
+      if (line.contains(RegExp("package *="))) {
         line = line.replaceAll(
           RegExp('package=("|\')[^("|\')]*("|\')'),
           'package="$package"',
