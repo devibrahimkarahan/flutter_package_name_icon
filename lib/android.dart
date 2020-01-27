@@ -2,6 +2,10 @@ import 'dart:io';
 
 const String _mainFolder = "android/app/src/main";
 const String _manifestFilePath = "$_mainFolder/AndroidManifest.xml";
+const String _debugManifestFilePath =
+    "android/app/src/debug/AndroidManifest.xml";
+const String _profileManifestFilePath =
+    "android/app/src/profile/AndroidManifest.xml";
 const String _appBuildGradle = "android/app/build.gradle";
 const String _mainActivityName = "MainActivity";
 
@@ -25,6 +29,8 @@ void updateAppName(String name) {
 
 void updatePackageName(String package) {
   _updatePackageNameByFile(_manifestFilePath, package);
+  _updatePackageNameByFile(_debugManifestFilePath, package);
+  _updatePackageNameByFile(_profileManifestFilePath, package);
   _updatePackageNameByFile(_appBuildGradle, package);
   _updatePackageNameIntoMainActivity(package);
   _updateFolderStructure(package);
