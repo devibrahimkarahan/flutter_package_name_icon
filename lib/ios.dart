@@ -26,7 +26,7 @@ void updateBundleId(String bundleId) {
     final String line = lines[i];
     if (line.contains(_bundleIDKey)) {
       final String preTag = lines[i].split(_bundleIDKey)[0];
-      lines[i] = '$preTag$_bundleIDKey = "$bundleId";';
+      lines[i] = "$preTag$_bundleIDKey = $bundleId;";
       pbXFile.writeAsStringSync(lines.join("\n"));
     }
   }
